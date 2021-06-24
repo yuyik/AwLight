@@ -542,9 +542,16 @@
   }
 
   async function BtnSwaptoTransfer() {
+    Swal.fire({
+        icon: 'info',
+        title: 'Please wait...',
+        html: '[Swap & Transfer] System in progress!',
+        showConfirmButton: false,
+        timer: 5000
+      })    
     const balance = await getBalance(wax.userAccount, wax.api.rpc);
     const balanceTLM = parseFloat(balance).toFixed(4) - 0.0001
-    const amountToST = parseFloat(document.getElementById("amountToST").innerHTML)
+    const amountToST = parseFloat(document.getElementById("amountToST").value)
     console.log(balanceTLM)
     if (balanceTLM >= amountToST) {
       console.log('Go to Swap')
@@ -577,7 +584,7 @@
               bott.appendMessage(`Swap get ${balancewaxx} WAX`)
               var account = document.getElementById("text-user").innerHTML
               var amount = parseFloat(balancewaxx).toFixed(8) - 0.0001
-              var toAcc = document.getElementById("accToST").innerHTML
+              var toAcc = document.getElementById("accToST").value
               var memo = ""
               const transferWAX = {
                 'from': account,
@@ -601,7 +608,14 @@
                 expireSeconds: 90,
               });
               if (results && results.processed) {
-                bott.appendMessage(`Succsess : Transfer ${amount} WAX From ${account} To ${toAcc}`)
+                bott.appendMessage(`Success : Transfer ${amount} WAX From ${account} To ${toAcc}`)
+                Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        html: '[Swap & Transfer] The system executed successfully.',
+        showConfirmButton: false,
+        timer: 2000
+      })    
                 return `Transfer ${amount} WAX from ${account} to ${toAcc}`
               }
             }
@@ -614,3 +628,4 @@
 </script>
 
 </html>
+
