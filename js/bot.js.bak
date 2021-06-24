@@ -61,9 +61,9 @@ class bot {
   }
 
   appendMessage(msg, box = '') {
-    const dateNow = moment().format('HH:mm:ss');
+    const dateNow = moment().format('DD/MM/YYYY H:mm:ss');
     const boxMessage = document.getElementById("box-message" + box)
-    boxMessage.value += `${dateNow} : ${msg} + '\n' + `
+    boxMessage.value += '\n' + `${dateNow} : ${msg}`
     boxMessage.scrollTop = boxMessage.scrollHeight;
   }
 

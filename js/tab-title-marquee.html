@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>argh!</title>
+	<script type="text/javascript">
+		message = "The quick brown 🦊 jumps over the lazy 🐶 ";
+		function step() {
+			message = message.substr(1) + message.substr(0,1);
+			document.title = message.substr(0,15);
+		}
+	</script>
+</head>
+<body onload="setInterval(step,100)">
+	<p>Do not do this. Ever. Unless you're fixing Javascript's emoji bug in string manipulation.</p>
+</body>
+</html>
