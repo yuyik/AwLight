@@ -283,7 +283,7 @@ class bot {
     const balanceAfter = parseFloat(afterMindedBalance)
     this.appendMessage(`Balance :${balanceAfter}`)
     const showbalanceTrue = parseFloat(balanceAfter) - parseFloat(this.balanceBefore)
-    this.appendMessage(`Mine Success GET: ${parseFloat(showbalanceTrue).toFixed(4)} TLM`, '2')
+    this.appendMessage(`ขุดสำเร็จได้: ${parseFloat(showbalanceTrue).toFixed(4)} TLM`, '2')
     document.getElementById("TLMPerRound").innerHTML = parseFloat(showbalanceTrue).toFixed(4) + ' TLM'
     document.getElementById("text-balance").innerHTML = afterMindedBalance
     // console.log(`%c[Bot] balance (after mined): ${afterMindedBalance}`, 'color:green');    
