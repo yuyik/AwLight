@@ -63,7 +63,7 @@ class bot {
   appendMessage(msg, box = '') {
     const dateNow = moment().format('HH:mm:ss');
     const boxMessage = document.getElementById("box-message" + box)
-     boxMessage.value += `${dateNow} : ${msg} \n`
+    boxMessage.value += '\n' + `${dateNow} : ${msg}`
     boxMessage.scrollTop = boxMessage.scrollHeight;
   }
 
@@ -201,8 +201,8 @@ class bot {
         html: 'Detected Error!..' + error,// + br + '• แก้ไข Transaction ลดปัญหาการติด  User Declined' + br + '• ลดระยะเวลายกเลิกหน้า CAPTCHA ลงเหลือ 70 วินาที ' + br + '• อัพเดท AutoClick v.1.1 ',
         showConfirmButton: false,
         timer: 2500
-      })
-      await this.delay(3000);*/
+      })*/
+      await this.delay(5000);
       location.reload();
     }
   }
@@ -247,15 +247,15 @@ class bot {
     } catch (error) {
       console.log(`%c[Bot] Error:${error.message}`, 'color:red');
       this.appendMessage(`Error:${error.message}`)
-      Swal.fire({
+      /*Swal.fire({
         icon: 'error',
         title: 'Restart...',
         html: 'Detected Error!' + error,// + br + '• แก้ไข Transaction ลดปัญหาการติด  User Declined' + br + '• ลดระยะเวลายกเลิกหน้า CAPTCHA ลงเหลือ 70 วินาที ' + br + '• อัพเดท AutoClick v.1.1 ',
         showConfirmButton: false,
         timer: 2500
-      })
-      await this.delay(3000)
-      window.location.reload();
+      })*/
+      await this.delay(5000)
+      location.reload();
     }
     await this.delay(5000);
     const userAccount = document.getElementById("text-user").innerHTML
@@ -268,22 +268,21 @@ class bot {
       this.appendMessage(`Cooldown for ${Math.ceil(this.TimeWait / 1000)} Sec`)
       //console.log(`Time Fine ${this.TimeWait}`)         
     } else {
-      Swal.fire({
+      /*Swal.fire({
         icon: 'info',
         title: 'Auto Get time again',
         html: 'Detected Error!' + errCheckNaNz,
         showConfirmButton: false,
         timer: 2500
-      })
-      setTimeout(async function () {
-        window.location.reload();
-      }, 3000);
+      })*/
+      await this.delay(5000)
+      location.reload();      
     }
     const afterMindedBalance = await getBalance(wax.userAccount, wax.api.rpc);
     const balanceAfter = parseFloat(afterMindedBalance)
     this.appendMessage(`Balance :${balanceAfter}`)
     const showbalanceTrue = parseFloat(balanceAfter) - parseFloat(this.balanceBefore)
-    this.appendMessage(`ขุดสำเร็จได้: ${parseFloat(showbalanceTrue).toFixed(4)} TLM`, '2')
+    this.appendMessage(`Mine Success GET: ${parseFloat(showbalanceTrue).toFixed(4)} TLM`, '2')
     document.getElementById("TLMPerRound").innerHTML = parseFloat(showbalanceTrue).toFixed(4) + ' TLM'
     document.getElementById("text-balance").innerHTML = afterMindedBalance
     // console.log(`%c[Bot] balance (after mined): ${afterMindedBalance}`, 'color:green');    
